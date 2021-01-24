@@ -1,0 +1,10 @@
+.app-title-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-title {
+  color: darkblue;
+  cursor: pointer;
+}

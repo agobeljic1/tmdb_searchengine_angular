@@ -1,0 +1,61 @@
+<div class="movie-page-container">
+    <div id="movie-page-picture-container">
+      <div id="movie-page-picture-card" class="card elevated">
+        <img
+          class="card-img-top movie-page-picture"
+          src={{movie.portrait}}
+          alt="Card cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title movie-page-rating">
+            {{movie.vote_average?.toString() + "rating out of " + movie.vote_count?.toString() + " votes"}}
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div id="movie-page-main">
+      <div id="movie-page-details" class="card elevated">
+        <div class="card-body">
+          <div class="movie-page-title-bar">
+            <h2 class="movie-page-title">{{movie.title}}</h2>
+            <h2 class="movie-page-adult" *ngIf="movie.adult">ADULT</h2>
+          </div>
+          <hr />
+          <span class="movie-page-detail">
+            <label class="movie-page-detail-key">Original title:</label>
+            <label>{{movie.original_title}}</label>
+          </span>
+          <span class="movie-page-detail">
+            <label class="movie-page-detail-key">
+              Original language:
+            </label>
+            <label>{{movie.original_language}}</label>
+          </span>
+          <span class="movie-page-detail">
+            <label class="movie-page-detail-key">Release date: </label>
+            <label>{{movie.release_date}}</label>
+          </span>
+          <span class="movie-page-detail">
+            <label class="movie-page-detail-key">Overview: </label>
+            <label>{{movie.overview}}</label>
+          </span>
+        </div>
+      </div>
+      <div id="movie-page-related" class="card elevated">
+        <h2 class="movie-page-title">Related</h2>
+        <hr />
+        <div id="movie-page-related-content">          
+            <div *ngFor="let relatedMovie of relatedMovies" class="movie-page-related-content-card col-md-3" [routerLink]="['/movie',relatedMovie.id]" (click)="onRelatedMovieClick()">              
+                <img
+                  class="movie-page-related-picture"
+                  src={{relatedMovie.portrait}}
+                  alt="Card cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{relatedMovie.title}}</h5>
+                </div>
+            </div>           
+        </div>
+      </div>
+    </div>
+  </div>

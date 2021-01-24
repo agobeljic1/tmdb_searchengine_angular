@@ -1,0 +1,67 @@
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-bar-engine {
+  width: 60vw;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.search-bar-buttons {
+  width: 100%;
+}
+
+.search-bar-buttons button {
+  border-radius: 0;
+  width: 50%;
+}
+
+.search-results-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.card-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.elevated {
+  box-shadow: -3px 6px 5px 0px rgba(176, 164, 176, 1);
+  transition: all 0.3s ease-in-out;
+}
+
+.elevated:hover {
+  box-shadow: -3px 18px 20px 0px rgba(99, 89, 99, 1);
+}
+
+.result-card {
+  width: 90%;
+}
+
+.card-title {
+  text-align: center;
+}
+.result-card,
+.related-movie-card,
+.related-serie-card {
+  cursor: pointer;
+}
+
+.search-result-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}

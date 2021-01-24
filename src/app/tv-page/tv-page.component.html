@@ -1,0 +1,61 @@
+<div class="serie-page-container">
+    <div id="serie-page-picture-container">
+      <div id="serie-page-picture-card" class="card elevated">
+        <img
+          class="card-img-top serie-page-picture"
+          src={{serie.portrait}}
+          alt="Card cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title serie-page-rating">
+            {{serie.vote_average?.toString() + "rating out of " + serie.vote_count?.toString() + " votes"}}
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div id="serie-page-main">
+      <div id="serie-page-details" class="card elevated">
+        <div class="card-body">
+          <div class="serie-page-title-bar">
+            <h2 class="serie-page-title">{{serie.title}}</h2>
+            <h2 class="serie-page-adult" *ngIf="serie.adult">ADULT</h2>
+          </div>
+          <hr />
+          <span class="serie-page-detail">
+            <label class="serie-page-detail-key">Original title:</label>
+            <label>{{serie.original_title}}</label>
+          </span>
+          <span class="serie-page-detail">
+            <label class="serie-page-detail-key">
+              Original language:
+            </label>
+            <label>{{serie.original_language}}</label>
+          </span>
+          <span class="serie-page-detail">
+            <label class="serie-page-detail-key">Release date: </label>
+            <label>{{serie.release_date}}</label>
+          </span>
+          <span class="serie-page-detail">
+            <label class="serie-page-detail-key">Overview: </label>
+            <label>{{serie.overview}}</label>
+          </span>
+        </div>
+      </div>
+      <div id="serie-page-related" class="card elevated">
+        <h2 class="serie-page-title">Related</h2>
+        <hr />
+        <div id="serie-page-related-content">          
+            <div *ngFor="let relatedSerie of relatedSeries" class="serie-page-related-content-card col-md-3" [routerLink]="['/serie',relatedSerie.id]" (click)="onRelatedSerieClick()">              
+                <img
+                  class="serie-page-related-picture"
+                  src={{relatedSerie.portrait}}
+                  alt="Card cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{{relatedSerie.title}}</h5>
+                </div>
+            </div>           
+        </div>
+      </div>
+    </div>
+  </div>
