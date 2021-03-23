@@ -1,0 +1,54 @@
+<div class="search-bar-container">
+  <div class="search-bar-engine">
+    <input
+      class="form-control search-input"
+      placeholder="Search"
+      [(ngModel)]="this.searchTerm"
+      (input)="this.onSearchTermChange($event)"
+    />
+    <div class="search-bar-buttons">
+      <button class="btn btn-primary" (click)="onMovieSearch()">Movies</button>
+      <button class="btn btn-success" (click)="onTvShowSearch()">
+        Tv shows
+      </button>
+    </div>
+  </div>
+</div>
+<div
+  style="width: 100%; display: grid; place-items: center"
+  *ngIf="!finishedLoadingItems"
+>
+  <div class="spinner-border text-primary centered" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div
+  class="search-result-message"
+  *ngIf="!isFetching && finishedLoadingItems && displayItems.length === 0"
+>
+  <p>No search results</p>
+</div>
+<div
+  class="search-results-container"
+  *ngIf="!isFetching && displayItems.length !== 0"
+>
+  <div
+    class="col-sm-6 col-md-4 card-container"
+    [routerLink]="[this.searchType, result.id]"
+    *ngFor="let result of displayItems"
+    [ngClass]="finishedLoadingItems ? 'loadedImage' : ''"
+  >
+    <div class="card result-card elevated">
+      <img
+        class="card-img-top"
+        src="{{ result.landscape }}"
+        alt="Card cap"
+        (load)="onLoad()"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ result.title }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

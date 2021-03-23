@@ -1,0 +1,69 @@
+<div class="tv-show-page-container">
+  <div id="tv-show-page-picture-container">
+    <div id="tv-show-page-picture-card" class="card elevated">
+      <img
+        class="card-img-top tv-show-page-picture"
+        src="{{ tvShow.portrait }}"
+        alt="Card cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title tv-show-page-rating">
+          {{
+            tvShow.vote_average?.toString() +
+              "rating out of " +
+              tvShow.vote_count?.toString() +
+              " votes"
+          }}
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div id="tv-show-page-main">
+    <div id="tv-show-page-details" class="card elevated">
+      <div class="card-body">
+        <div class="tv-show-page-title-bar">
+          <h2 class="tv-show-page-title">{{ tvShow.title }}</h2>
+          <h2 class="tv-show-page-adult" *ngIf="tvShow.adult">ADULT</h2>
+        </div>
+        <hr />
+        <span class="tv-show-page-detail">
+          <label class="tv-show-page-detail-key">Original title:</label>
+          <label>{{ tvShow.original_title }}</label>
+        </span>
+        <span class="tv-show-page-detail">
+          <label class="tv-show-page-detail-key"> Original language: </label>
+          <label>{{ tvShow.original_language }}</label>
+        </span>
+        <span class="tv-show-page-detail">
+          <label class="tv-show-page-detail-key">Release date: </label>
+          <label>{{ tvShow.release_date }}</label>
+        </span>
+        <span class="tv-show-page-detail">
+          <label class="tv-show-page-detail-key">Overview: </label>
+          <label>{{ tvShow.overview }}</label>
+        </span>
+      </div>
+    </div>
+    <div id="tv-show-page-related" class="card elevated">
+      <h2 class="tv-show-page-title">Related</h2>
+      <hr />
+      <div id="tv-show-page-related-content">
+        <div
+          *ngFor="let relatedTvShow of relatedTvShows"
+          class="tv-show-page-related-content-card col-md-3"
+          [routerLink]="['/tv', relatedTvShow.id]"
+          (click)="onRelatedTvShowClick()"
+        >
+          <img
+            class="tv-show-page-related-picture"
+            src="{{ relatedTvShow.portrait }}"
+            alt="Card cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ relatedTvShow.title }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

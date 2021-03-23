@@ -65,3 +65,16 @@
   align-items: center;
   margin-top: 1rem;
 }
+
+.centered {
+  display: grid;
+  place-items: center;
+}
+
+.card-container {
+  display: none;
+}
+
+.loadedImage {
+  display: block;
+}
